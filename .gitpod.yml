@@ -1,18 +1,18 @@
-image:
-  file: .gitpod.Dockerfile
-
-# Set Java 17 environment variables globally
-env:
-  JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
-
 tasks:
-  - name: Build and run Spring Boot
+  - name: Setup Java 17 and Build Spring Boot
     init: |
-      export PATH=$JAVA_HOME/bin:$PATH
+      # Install Java 17 via SDKMAN and set as default
+      sdk install java 17.0.15-tem
+      sdk default java 17.0.15-tem
+      
+      # Verify Java 17 is active
       java -version
+      mvn -version
+      
+      # Build the project
       mvn clean install
     command: |
-      export PATH=$JAVA_HOME/bin:$PATH
+      # Run Spring Boot application
       mvn spring-boot:run
 
 ports:
