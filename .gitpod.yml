@@ -1,8 +1,8 @@
 tasks:
   - name: Setup Java 17 and Build Spring Boot
     init: |
-      # Install Java 17 via SDKMAN and set as default
-      sdk install java 17.0.15-tem
+      # Install Java 17 via SDKMAN (automated - no prompts)
+      echo "Y" | sdk install java 17.0.15-tem
       sdk default java 17.0.15-tem
       
       # Verify Java 17 is active
