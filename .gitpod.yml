@@ -1,0 +1,20 @@
+# .gitpod.yml
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - name: Build and run Spring Boot
+    init: mvn clean install
+    command: mvn spring-boot:run
+
+ports:
+  - port: 8080
+    onOpen: open-preview
+
+vscode:
+  extensions:
+    - vscjava.vscode-spring-boot
+    - vscjava.vscode-maven
+    - redhat.java
+    - Pivotal.vscode-spring-boot
+    - eamodio.gitlens
